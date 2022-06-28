@@ -12,5 +12,3 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
       - ./enem_10.csv:/postgres-data/enem_10.csv
       - ./script.sql:/docker-entrypoint-initdb.d/script.sql
-    command: >
-      - sh -c "chmod 777 /postgres-data/enem_10.csv"
