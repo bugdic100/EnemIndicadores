@@ -91,21 +91,3 @@ INSERT INTO enem.tb_raca (co_raca,no_raca) VALUES ('3','Parda');
 INSERT INTO enem.tb_raca (co_raca,no_raca) VALUES ('4','Amarela');
 INSERT INTO enem.tb_raca (co_raca,no_raca) VALUES ('5','Indígena');
 INSERT INTO enem.tb_raca (co_raca,no_raca) VALUES ('6','Não dispõe da informação');
-
-COPY enem.tb_enem
-FROM '/postgres-data/enem_10.csv' 
-DELIMITER ';'
-ENCODING 'iso-8859-1'
-CSV HEADER;
-
-ALTER TABLE enem.tb_enem
-ADD COLUMN nota_final numeric;
-
-UPDATE enem.tb_enem
-SET nota_final = nu_nota_cn + nu_nota_ch + nu_nota_lc + nu_nota_mt+ nu_nota_redacao;
-
-ALTER TABLE enem.tb_enem
-ADD COLUMN presenca numeric;
-
-UPDATE enem.tb_enem
-SET presenca = tp_presenca_cn+tp_presenca_ch+tp_presenca_lc+tp_presenca_mt;
